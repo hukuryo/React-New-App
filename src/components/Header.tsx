@@ -9,9 +9,7 @@ export const Header = () => {
         <nav>
           <ul className="flex space-x-6">
             <li className="hover:underline">
-              <a>
-                <Link to={`/Home`}>ホーム</Link>
-              </a>
+              <Link to={`/Home`}>ホーム</Link>
             </li>
             <li className="hover:underline">
               <Link to="/Stock">あとで読む</Link>
