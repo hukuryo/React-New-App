@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Header } from "./components/Header";
-import { Home } from "./routes/Home";
+import { Articles } from "./routes/Articles";
 import { Stock } from "./routes/Stock";
 import { Favorite } from "./routes/Favorite";
+import { ArticleDetail } from "./routes/ArticleDetail";
 import { NotFound } from "./routes/NotFound";
 
 export default function App() {
@@ -12,9 +13,10 @@ export default function App() {
       <>
         <Header />
         <Routes>
-          <Route path={`/home`} element={<Home />} />
+          <Route path={`/articles`} element={<Articles />} />
           <Route path={`/stock`} element={<Stock />} />
           <Route path={`/favorite`} element={<Favorite />} />
+          <Route path={`/article/:id`} element={<ArticleDetail />} />
           <Route path={`/*/`} element={<NotFound />} />
         </Routes>
       </>
