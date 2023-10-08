@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import clipReducer from "../store/slice";
+import clipReducer from "./clipSlice";
 
 export const store = configureStore({
   reducer: {
