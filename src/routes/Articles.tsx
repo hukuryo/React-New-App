@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../lib/client";
-import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faNewspaper } from "@fortawesome/free-solid-svg-icons";
 
 import { NewsList } from "../components/NewsList";
 import { Loading } from "../components/Loading";
@@ -29,7 +29,7 @@ export const Articles = () => {
   return (
     <div className="bg-gray-100">
       <div className="p-8">
-        <PageTitle pageTitle={"ニュース一覧"} iconName={faNewspaper} />
+        <PageTitle pageTitle={"ホーム"} iconName={faHome} />
         {loading ? <Loading /> : <NewsList articles={articles} />}
       </div>
     </div>
