@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark, faHeart, faHome } from "@fortawesome/free-solid-svg-icons";
+
 export const Header = () => {
   return (
     <header className="bg-blue-500 text-white py-4">
@@ -10,13 +13,22 @@ export const Header = () => {
         <nav>
           <ul className="flex space-x-6">
             <li className="hover:opacity-70 font-bold">
-              <Link to={`/Articles`}>ホーム</Link>
+              <Link to={`/Articles`}>
+                <FontAwesomeIcon icon={faHome} className="pr-1" />
+                ホーム
+              </Link>
             </li>
             <li className="hover:opacity-70 font-bold">
-              <Link to="/Stock">あとで読む</Link>
+              <Link to="/Stock">
+                <FontAwesomeIcon icon={faBookmark} className="pr-1" />
+                あとで読む
+              </Link>
             </li>
             <li className="hover:opacity-70 font-bold">
-              <Link to="/Favorite">お気に入りの記事</Link>
+              <Link to="/Favorite">
+                <FontAwesomeIcon icon={faHeart} className="pr-1" />
+                お気に入りの記事
+              </Link>
             </li>
           </ul>
         </nav>
