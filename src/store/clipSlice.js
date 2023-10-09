@@ -15,7 +15,10 @@ export const clipSlice = createSlice({
     deleteClip: (state, action) => {
       const deletingClip = action.payload;
       const currentClip = state.clips;
-      //   const filterClip = currentClip.filter((clip) => clip.)
+      const filterClip = currentClip.filter(
+        (clip) => clip.publishedAt !== deletingClip.publishedAt
+      );
+      state.clips = filterClip;
     },
   },
 });

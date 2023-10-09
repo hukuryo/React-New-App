@@ -6,7 +6,7 @@ import { API_URL } from "../lib/client";
 import { Loading } from "../components/Loading";
 import { Article } from "../types/article";
 import axios from "axios";
-import { addClip } from "../store/clipSlice";
+import { addClip, deleteClip } from "../store/clipSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ArticleDetail = () => {
@@ -22,7 +22,11 @@ export const ArticleDetail = () => {
   const isEnable = clips.some((clip: any) => clip.publishedAt === currentPath);
 
   const ArticleClip = () => {
-    dispatch(addClip(filterArticle));
+    if (isEnable) {
+      dispatch(deleteClip(filterArticle));
+    } else {
+      dispatch(addClip(filterArticle));
+    }
   };
 
   const bookMarkButtonStyle = isEnable ? "orange" : "black";
