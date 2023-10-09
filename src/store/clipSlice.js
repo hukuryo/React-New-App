@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  clips: 0,
+  clips: [],
 };
 
 export const clipSlice = createSlice({
