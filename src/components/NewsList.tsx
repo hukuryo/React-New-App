@@ -10,7 +10,7 @@ type ArticleList = {
 export const NewsList: FC<ArticleList> = ({ articles }) => {
   return (
     <div className="py-8">
-      <div className="container mx-auto">
+      <div className="container mx-auto border-black">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {articles.map((article, index) => (
             <div

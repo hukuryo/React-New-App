@@ -27,7 +27,7 @@ export const Articles = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100">
+    <div>
       <div className="p-8">
         <PageTitle pageTitle={"ホーム"} iconName={faHome} />
         {loading ? <Loading /> : <NewsList articles={articles} />}

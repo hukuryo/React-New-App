@@ -27,7 +27,7 @@ export const Favorite = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100">
+    <div>
       <div className="p-8">
         <PageTitle pageTitle="お気に入りの記事" iconName={faHeart} />
         {loading ? <Loading /> : <NewsList articles={articles} />}
