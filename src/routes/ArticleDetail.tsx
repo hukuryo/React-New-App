@@ -1,44 +1,72 @@
-import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { BookMarkButton } from "../components/BookMarkButton";
 import { FavoriteButton } from "../components/FavoriteButton";
+import { API_URL } from "../lib/client";
+import { Loading } from "../components/Loading";
+import { Article } from "../types/article";
+import axios from "axios";
 
 export const ArticleDetail = () => {
+  const [filterArticle, setFilterArticle] = useState<Article | null>(null);
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
-  const currentPass = location.pathname.substring(9);
+  const currentPath = location.pathname.substring(9);
 
-  // 仮の記事データ
-  const article = {
-    title: "記事のタイトル",
-    author: "著者名",
-    content:
-      "記事の本文。ここに記事の詳細情報や本文を表示します。Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-    imageUrl: "https://example.com/article-image.jpg",
-    publishedAt: "2023-10-06T12:10:06Z",
-  };
+  const enable = false;
+  const bookMarkButtonStyle = enable ? "blue" : "black";
+  const favoriteButtonStyle = enable ? "red" : "black";
+
+  useEffect(() => {
+    const fetchNewsLists = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        const articles = response.data.articles;
+        const filteredArticle = articles.find(
+          (article: Article) => article.publishedAt === currentPath
+        );
+
+        if (filteredArticle) {
+          setFilterArticle(filteredArticle);
+          setLoading(false);
+        } else {
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error("Error fetching news:", error);
+        setLoading(false);
+      }
+    };
+    fetchNewsLists();
+  }, [currentPath]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (!filterArticle) {
+    return <div>記事が見つかりませんでした。</div>;
+  }
 
   return (
     <div className="container mx-auto py-8">
       <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
         <div className="mb-10">
-          <BookMarkButton iconStyle="blue" />
-          <FavoriteButton iconStyle="red" />
+          <BookMarkButton iconStyle={bookMarkButtonStyle} addClip={() => {}} />
+          {/* <FavoriteButton iconStyle={favoriteButtonStyle} /> */}
         </div>
-        {/* 記事のタイトル */}
-        <h1 className="text-3xl font-semibold mb-4">{article.title}</h1>
-
-        {/* 記事の著者 */}
-        <p className="text-gray-500 mb-4">著者: {article.author}</p>
-
-        {/* 記事の画像 */}
+        <h1 className="text-3xl font-semibold mb-4">{filterArticle.title}</h1>
+        <p className="text-gray-500 mb-4">著者: {filterArticle.author}</p>
         <img
-          src={article.imageUrl}
-          alt={article.title}
+          src={filterArticle.urlToImage}
+          alt={filterArticle.title}
           className="w-full rounded-lg mb-4"
         />
+        <p className="text-gray-700 mt-10 mb-5">{filterArticle.description}</p>
 
-        {/* 記事の本文 */}
-        <p className="text-gray-700">{article.content}</p>
-        <p className="text-gray-700 mt-10">{article.publishedAt}</p>
+        <span className="text-blue-500">
+          <Link to={filterArticle.url}>続きはこちら→</Link>
+        </span>
       </div>
     </div>
   );

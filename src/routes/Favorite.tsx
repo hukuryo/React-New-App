@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../lib/client";
+import { Article } from "../types/article";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import { NewsList } from "../components/NewsList";
 import { Loading } from "../components/Loading";
 import { PageTitle } from "../components/PageTitle";
-import { Article } from "../types/article";
-import { faBookmark, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export const Favorite = () => {
   const [articles, setArticles] = useState<Article[]>([]);

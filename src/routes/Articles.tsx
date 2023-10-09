@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../lib/client";
-import { faHome, faNewspaper } from "@fortawesome/free-solid-svg-icons";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 import { NewsList } from "../components/NewsList";
 import { Loading } from "../components/Loading";

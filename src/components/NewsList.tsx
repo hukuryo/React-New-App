@@ -14,7 +14,7 @@ export const NewsList: FC<ArticleList> = ({ articles }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {articles.map((article, index) => (
             <div
-              className="bg-white rounded-lg transition-transform transform"
+              className="bg-white rounded-lg transition-transform transform shadow-md hover:opacity-75"
               key={index}
             >
               <div>
@@ -22,7 +22,7 @@ export const NewsList: FC<ArticleList> = ({ articles }) => {
                   <img
                     src={article.urlToImage}
                     alt="ニュース1"
-                    className="w-60 h-60 object-cover"
+                    className="w-60 h-60 object-cover rounded-l-lg"
                   />
                   <div className="px-2 pt-4 pb-2 pr-10">
                     <h2 className="text-xl font-semibold text-gray-800 mb-2">

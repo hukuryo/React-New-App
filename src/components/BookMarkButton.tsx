@@ -5,10 +5,10 @@ import { Icon } from "../types/iconStyle";
 
 // iconStyleをpropsとして受け取る
 export const BookMarkButton: FC<Icon> = (props) => {
-  const { iconStyle } = props; // propsからiconStyleを取り出す
+  const { iconStyle, addClip } = props; // propsからiconStyleを取り出す
 
   return (
-    <button className="ml-1">
+    <button className="ml-1" onClick={() => {}}>
       <FontAwesomeIcon
         icon={faBookmark}
         size={"2xl"}
