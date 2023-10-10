@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Icon } from "../types/iconStyle";
+import { clipButton } from "../types/clipButton";
 
 // iconStyleをpropsとして受け取る
-export const BookMarkButton: FC<Icon> = (props) => {
-  const { iconStyle, addClip } = props;
+export const BookMarkButton: FC<clipButton> = (props) => {
+  const { iconStyle, articleClip } = props;
 
   return (
-    <button className="ml-1 hover:opacity-75" onClick={addClip}>
+    <button className="ml-1 hover:opacity-75" onClick={articleClip}>
       <FontAwesomeIcon
         icon={faBookmark}
         size={"2xl"}
