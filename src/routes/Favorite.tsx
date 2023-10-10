@@ -1,22 +1,21 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { API_URL } from "../lib/client";
-import { Article } from "../types/article";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import { NewsList } from "../components/NewsList";
 import { Loading } from "../components/Loading";
 import { PageTitle } from "../components/PageTitle";
+import { useSelector } from "react-redux";
 
 export const Favorite = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const favoriteArticles = useSelector(
+    (state: any) => state.favorite.favorites
+  );
 
   useEffect(() => {
     const fetchNewsLists = async () => {
       try {
-        const response = await axios.get(API_URL);
-        setArticles(response.data.articles);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching news:", error);
@@ -27,11 +26,9 @@ export const Favorite = () => {
   }, []);
 
   return (
-    <div>
-      <div className="p-8">
-        <PageTitle pageTitle="お気に入りの記事" iconName={faHeart} />
-        {loading ? <Loading /> : <NewsList articles={articles} />}
-      </div>
+    <div className="p-8">
+      <PageTitle pageTitle="お気に入りの記事" iconName={faHeart} />
+      {loading ? <Loading /> : <NewsList articles={favoriteArticles} />}
     </div>
   );
 };

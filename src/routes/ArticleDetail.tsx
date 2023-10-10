@@ -7,6 +7,7 @@ import { Loading } from "../components/Loading";
 import { Article } from "../types/article";
 import axios from "axios";
 import { addClip, deleteClip } from "../store/clipSlice";
+import { addFavorite, deleteFavorite } from "../store/favoriteSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ArticleDetail = () => {
@@ -16,7 +17,7 @@ export const ArticleDetail = () => {
   const location = useLocation();
   const currentPath = location.pathname.substring(9);
 
-  // ReduxToolkitで値を取得
+  // あとで読む記事の情報を取得
   const dispatch = useDispatch();
   const clips = useSelector((state: any) => state.clip.clips);
   const isEnable = clips.some((clip: any) => clip.publishedAt === currentPath);
@@ -29,8 +30,23 @@ export const ArticleDetail = () => {
     }
   };
 
+  // いいねした記事を取得
+  const favoriteArticles = useSelector(
+    (state: any) => state.favorite.favorites
+  );
+  const isFavorites = favoriteArticles.some(
+    (article: any) => article.publishedAt === currentPath
+  );
+  const ArticleFavorite = () => {
+    if (isFavorites) {
+      dispatch(deleteFavorite(filterArticle));
+    } else {
+      dispatch(addFavorite(filterArticle));
+    }
+  };
+
   const bookMarkButtonStyle = isEnable ? "orange" : "black";
-  //   const favoriteButtonStyle = isEnable ? "red" : "black";
+  const favoriteButtonStyle = isFavorites ? "red" : "black";
 
   useEffect(() => {
     const fetchNewsLists = async () => {
@@ -68,9 +84,12 @@ export const ArticleDetail = () => {
         <div className="mb-10">
           <BookMarkButton
             iconStyle={bookMarkButtonStyle}
-            addClip={ArticleClip}
+            articleClip={ArticleClip}
           />
-          {/* <FavoriteButton iconStyle={favoriteButtonStyle} /> */}
+          <FavoriteButton
+            iconStyle={favoriteButtonStyle}
+            favoriteArticle={ArticleFavorite}
+          />
         </div>
         <h1 className="text-3xl font-semibold mb-4">{filterArticle.title}</h1>
         <p className="text-gray-500 mb-4">著者: {filterArticle.author}</p>
