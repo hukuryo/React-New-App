@@ -11,6 +11,7 @@ import { PageTitle } from "../components/PageTitle";
 export const Articles = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchNewsLists = async () => {
@@ -27,11 +28,19 @@ export const Articles = () => {
   }, []);
 
   return (
-    <div>
-      <div className="p-8">
-        <PageTitle pageTitle={"ホーム"} iconName={faHome} />
-        {loading ? <Loading /> : <NewsList articles={articles} />}
-      </div>
+    <div className="p-8">
+      <input
+        type="text"
+        placeholder="記事を検索..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="w-80 p-2 rounded border mb-4"
+      />
+      <button className="bg-blue-500 hover:bg-blue-700 text-white p-2">
+        検索
+      </button>
+      <PageTitle pageTitle={"ホーム"} iconName={faHome} />
+      {loading ? <Loading /> : <NewsList articles={articles} />}
     </div>
   );
 };
