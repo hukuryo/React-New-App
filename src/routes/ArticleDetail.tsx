@@ -101,7 +101,13 @@ export const ArticleDetail = () => {
         <p className="text-gray-700 mt-10 mb-5">{filterArticle.description}</p>
 
         <span className="text-blue-500">
-          <Link to={filterArticle.url}>続きはこちら→</Link>
+          <Link
+            to={filterArticle.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            続きはこちら→
+          </Link>
         </span>
       </div>
     </div>
