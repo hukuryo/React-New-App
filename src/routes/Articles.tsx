@@ -7,6 +7,7 @@ import { NewsList } from "../components/NewsList";
 import { Loading } from "../components/Loading";
 import { Article } from "../types/article";
 import { PageTitle } from "../components/PageTitle";
+import { SearchForm } from "../components/SearchForm";
 
 export const Articles = () => {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -31,27 +32,26 @@ export const Articles = () => {
     const filterArticles = articles.filter((article) =>
       article.title.includes(searchQuery)
     );
-    console.log(filterArticles);
     setArticles(filterArticles);
   };
 
   return (
     <div className="p-8">
-      <input
-        type="text"
-        placeholder="記事を検索..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        className="w-80 p-2 rounded border mb-4"
-      />
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white p-2"
-        onClick={searchArticles}
-      >
-        検索
-      </button>
       <PageTitle pageTitle={"ホーム"} iconName={faHome} />
-      {loading ? <Loading /> : <NewsList articles={articles} />}
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <SearchForm
+            value={searchQuery}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSearchQuery(e.target.value)
+            }
+            onSearch={searchArticles}
+          />
+          <NewsList articles={articles} />
+        </>
+      )}
     </div>
   );
 };
