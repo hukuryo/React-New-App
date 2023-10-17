@@ -8,6 +8,10 @@ type ArticleList = {
 };
 
 export const NewsList: FC<ArticleList> = ({ articles }) => {
+  if (articles.length === 0) {
+    return <div>記事が見つかりませんでした。</div>;
+  }
+
   return (
     <div className="mt-10">
       <div className="mx-auto border-black">
