@@ -25,7 +25,14 @@ export const Stock = () => {
   return (
     <div className="p-8">
       <PageTitle pageTitle="ストック記事" iconName={faBookmark} />
-      {loading ? <Loading /> : <NewsList articles={clips} />}
+      {loading ? (
+        <Loading />
+      ) : (
+        <NewsList
+          articles={clips}
+          noArticleMessage={"登録されている記事はありません。"}
+        />
+      )}
     </div>
   );
 };

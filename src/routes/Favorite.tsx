@@ -28,7 +28,14 @@ export const Favorite = () => {
   return (
     <div className="p-8">
       <PageTitle pageTitle="お気に入りの記事" iconName={faHeart} />
-      {loading ? <Loading /> : <NewsList articles={favoriteArticles} />}
+      {loading ? (
+        <Loading />
+      ) : (
+        <NewsList
+          articles={favoriteArticles}
+          noArticleMessage={"お気に入りの記事はありません"}
+        />
+      )}
     </div>
   );
 };

@@ -21,8 +21,8 @@ export const Articles = () => {
         setArticles(response.data.articles);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching news:", error);
         setLoading(false);
+        return <div>ニュースが取得できませんでした</div>;
       }
     };
     fetchNewsLists();
@@ -49,7 +49,10 @@ export const Articles = () => {
             }
             onSearch={searchArticles}
           />
-          <NewsList articles={articles} />
+          <NewsList
+            articles={articles}
+            noArticleMessage={"記事が見つかりませんでした。"}
+          />
         </>
       )}
     </div>

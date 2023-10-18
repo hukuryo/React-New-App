@@ -1,15 +1,16 @@
 import { FC } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Article } from "../types/article";
 
 type ArticleList = {
   articles: Article[];
+  noArticleMessage: string;
 };
 
-export const NewsList: FC<ArticleList> = ({ articles }) => {
+export const NewsList: FC<ArticleList> = ({ articles, noArticleMessage }) => {
   if (articles.length === 0) {
-    return <div>記事が見つかりませんでした。</div>;
+    return <div>{noArticleMessage}</div>;
   }
 
   return (
