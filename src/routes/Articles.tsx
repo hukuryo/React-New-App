@@ -14,6 +14,8 @@ export const Articles = () => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
+  console.log(process.env);
+
   useEffect(() => {
     const fetchNewsLists = async () => {
       try {

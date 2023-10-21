@@ -6,6 +6,7 @@ import { Stock } from "./routes/Stock";
 import { Favorite } from "./routes/Favorite";
 import { ArticleDetail } from "./routes/ArticleDetail";
 import { NotFound } from "./routes/NotFound";
+import ArticlesSearch from "./routes/ArticlesSearch";
 
 export default function App() {
   return (
@@ -17,7 +18,8 @@ export default function App() {
           <Route path={`/stock`} element={<Stock />} />
           <Route path={`/favorite`} element={<Favorite />} />
           <Route path={`/article/:id`} element={<ArticleDetail />} />
-          <Route path={`/*/`} element={<NotFound />} />
+          <Route path={`/article/search`} element={<ArticlesSearch />} />
+          <Route path={`*`} element={<NotFound />} />
         </Routes>
       </>
     </BrowserRouter>
