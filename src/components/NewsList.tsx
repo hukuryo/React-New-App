@@ -13,9 +13,12 @@ export const NewsList: FC<ArticleList> = ({ articles, noArticleMessage }) => {
     return <div>{noArticleMessage}</div>;
   }
 
+  const articlesLength = articles.length;
+
   return (
     <div className="mt-10">
-      <div className="mx-auto border-black">
+      <p className="mb-5">{articlesLength}件の記事を表示中</p>
+      <div className="mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {articles.map((article, index) => (
             <div

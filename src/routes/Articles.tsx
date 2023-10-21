@@ -51,7 +51,7 @@ export const Articles = () => {
           />
           <NewsList
             articles={articles}
-            noArticleMessage={"記事が見つかりませんでした。"}
+            noArticleMessage={"記事が取得できませんでした。"}
           />
         </>
       )}

@@ -14,10 +14,10 @@ export const SearchForm: FC<SearchForm> = ({ value, onChange, onSearch }) => {
         placeholder="記事を検索..."
         value={value}
         onChange={onChange}
-        className="w-80 p-2 rounded border"
+        className="w-80 p-2 rounded border shadow-md"
       />
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded-md"
+        className="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded-md shadow-md"
         onClick={onSearch}
       >
         検索
