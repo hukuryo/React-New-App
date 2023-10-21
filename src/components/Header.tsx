@@ -13,7 +13,7 @@ export const Header = () => {
         <nav>
           <ul className="flex space-x-6">
             <li className="hover:opacity-70 font-bold">
-              <Link to={`/Articles`}>
+              <Link to={`/`}>
                 <FontAwesomeIcon icon={faHome} className="pr-1" />
                 ホーム
               </Link>
