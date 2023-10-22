@@ -5,6 +5,7 @@ import { NewsList } from "../components/NewsList";
 import { Loading } from "../components/Loading";
 import { PageTitle } from "../components/PageTitle";
 import { useSelector } from "react-redux";
+import { ScrollUp } from "../components/ScrollUp";
 
 export const Stock = () => {
   const [loading, setLoading] = useState(true);
@@ -28,10 +29,13 @@ export const Stock = () => {
       {loading ? (
         <Loading />
       ) : (
-        <NewsList
-          articles={clips}
-          noArticleMessage={"登録されている記事はありません。"}
-        />
+        <>
+          <NewsList
+            articles={clips}
+            noArticleMessage={"登録されている記事はありません。"}
+          />
+          <ScrollUp />
+        </>
       )}
     </div>
   );

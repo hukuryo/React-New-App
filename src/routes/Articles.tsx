@@ -8,13 +8,12 @@ import { Loading } from "../components/Loading";
 import { Article } from "../types/article";
 import { PageTitle } from "../components/PageTitle";
 import { SearchForm } from "../components/SearchForm";
+import { ScrollUp } from "../components/ScrollUp";
 
 export const Articles = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-
-  console.log(process.env);
 
   useEffect(() => {
     const fetchNewsLists = async () => {
@@ -57,6 +56,7 @@ export const Articles = () => {
           />
         </>
       )}
+      <ScrollUp />
     </div>
   );
 };

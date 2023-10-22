@@ -5,6 +5,7 @@ import { NewsList } from "../components/NewsList";
 import { Loading } from "../components/Loading";
 import { PageTitle } from "../components/PageTitle";
 import { useSelector } from "react-redux";
+import { ScrollUp } from "../components/ScrollUp";
 
 export const Favorite = () => {
   const [loading, setLoading] = useState(true);
@@ -31,10 +32,13 @@ export const Favorite = () => {
       {loading ? (
         <Loading />
       ) : (
-        <NewsList
-          articles={favoriteArticles}
-          noArticleMessage={"お気に入りの記事はありません"}
-        />
+        <>
+          <NewsList
+            articles={favoriteArticles}
+            noArticleMessage={"お気に入りの記事はありません"}
+          />
+          <ScrollUp />
+        </>
       )}
     </div>
   );
