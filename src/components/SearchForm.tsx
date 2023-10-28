@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 
 type SearchForm = {
   value: string;
@@ -16,12 +17,14 @@ export const SearchForm: FC<SearchForm> = ({ value, onChange, onSearch }) => {
         onChange={onChange}
         className="w-80 p-2 rounded border shadow-md"
       />
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded-md shadow-md"
-        onClick={onSearch}
-      >
-        検索
-      </button>
+      <Link to={`article/search?s=${value}`}>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white p-2 rounded-md shadow-md"
+          onClick={onSearch}
+        >
+          検索
+        </button>
+      </Link>
     </div>
   );
 };
