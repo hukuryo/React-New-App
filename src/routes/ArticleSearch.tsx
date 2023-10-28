@@ -21,6 +21,8 @@ export const ArticleSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const searchWord = useLocation().search.substring(3);
+  const decodedString = decodeURIComponent(searchWord);
+  console.log(decodedString);
 
   useEffect(() => {
     const fetchNewsLists = async () => {
@@ -28,7 +30,7 @@ export const ArticleSearch = () => {
         const response = await axios.get(API_URL);
         const searchArticles = response.data.articles;
         const filterArticles = searchArticles.filter((article: ArticleTitle) =>
-          article.title.includes(searchWord)
+          article.title.includes(decodedString)
         );
         setArticles(filterArticles);
         setLoading(false);
@@ -50,7 +52,7 @@ export const ArticleSearch = () => {
   return (
     <div className="p-8">
       <PageTitle
-        pageTitle={`"${searchWord}"の検索結果`}
+        pageTitle={`"${decodedString}"の検索結果`}
         iconName={faMagnifyingGlass}
       />
       {loading ? (
