@@ -21,13 +21,13 @@ export const Header = () => {
             <li className="hover:opacity-70 font-bold">
               <Link to="/Stock">
                 <FontAwesomeIcon icon={faBookmark} className="pr-1" />
-                あとで読む
+                ストック記事
               </Link>
             </li>
             <li className="hover:opacity-70 font-bold">
               <Link to="/Favorite">
                 <FontAwesomeIcon icon={faHeart} className="pr-1" />
-                お気に入りの記事
+                お気に入り記事
               </Link>
             </li>
           </ul>
