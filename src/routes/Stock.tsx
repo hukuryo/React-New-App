@@ -32,7 +32,7 @@ export const Stock = () => {
         <>
           <NewsList
             articles={clips}
-            noArticleMessage={"登録されている記事はありません。"}
+            noArticleMessage={"ストックしている記事はありません。"}
           />
           <ScrollUp />
         </>
