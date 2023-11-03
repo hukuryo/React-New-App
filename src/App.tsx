@@ -7,6 +7,8 @@ import { Favorite } from "./routes/Favorite";
 import { ArticleDetail } from "./routes/ArticleDetail";
 import { NotFound } from "./routes/NotFound";
 import { ArticleSearch } from "./routes/ArticleSearch";
+import { SignUp } from "./routes/SignUp";
+import { Login } from "./routes/Login";
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
           <Route path={`/favorite`} element={<Favorite />} />
           <Route path={`/article/:id`} element={<ArticleDetail />} />
           <Route path={`/article/search`} element={<ArticleSearch />} />
+          <Route path={`/login`} element={<Login />} />
+          <Route path={`/signUp`} element={<SignUp />} />
           <Route path={`*`} element={<NotFound />} />
         </Routes>
       </>

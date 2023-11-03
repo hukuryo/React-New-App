@@ -1,74 +1,53 @@
-// // import Head from "next/head";
-// import styles from "../styles/Home.module.css";
-// // import { supabase } from "../utils/supabase";
-// import { useState } from "react";
+import React from "react";
 
-// export default function SignUp() {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [passwordConf, setPasswordConf] = useState("");
-
-//   const onSubmit = async (e: any) => {
-//     e.preventDefault();
-//     try {
-//       const { error: signUpError } = await supabase.auth.signUp({
-//         email: email,
-//         password: password,
-//       });
-//       if (signUpError) {
-//         throw signUpError;
-//       }
-//       alert("登録完了メールを確認してください");
-//     } catch (error) {
-//       alert("エラーが発生しました");
-//     }
-//   };
-
-//   return (
-//     <>
-//       <div className={styles.container}>
-//         <Head>
-//           <title>新規登録画面</title>
-//           <link rel="icon" href="/favicon.ico" />
-//         </Head>
-//         <main className={styles.main}>
-//           <div className={styles.grid}>
-//             <form onSubmit={onSubmit}>
-//               <div>
-//                 <label>メールアドレス</label>
-//                 <input
-//                   type="email"
-//                   required
-//                   value={email}
-//                   onChange={(e) => setEmail(e.target.value)}
-//                 />
-//               </div>
-//               <div>
-//                 <label>パスワード</label>
-//                 <input
-//                   type="password"
-//                   required
-//                   value={password}
-//                   onChange={(e) => setPassword(e.target.value)}
-//                 />
-//               </div>
-//               <div>
-//                 <label>パスワード（確認）</label>
-//                 <input
-//                   type="password"
-//                   required
-//                   value={passwordConf}
-//                   onChange={(e) => setPasswordConf(e.target.value)}
-//                 />
-//               </div>
-//               <div>
-//                 <button type="submit">サインアップ</button>
-//               </div>
-//             </form>
-//           </div>
-//         </main>
-//         <footer className={styles.footer}></footer>
-//       </div>
-//     </>
-//   );
-// }
+export const SignUp = () => {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="max-w-md w-full p-6 space-y-8 bg-white rounded-lg shadow-md">
+        <div>
+          <h2 className="text-3xl font-semibold text-center">ユーザー登録</h2>
+        </div>
+        <form className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              ユーザー名
+            </label>
+            <input
+              type="text"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+              placeholder="ユーザー名を入力してください"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              メールアドレス
+            </label>
+            <input
+              type="email"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+              placeholder="メールアドレスを入力してください"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              パスワード
+            </label>
+            <input
+              type="password"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+              placeholder="パスワードを入力してください"
+            />
+          </div>
+          <div>
+            <button
+              className="w-full py-2 px-4 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+              type="submit"
+            >
+              登録
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
