@@ -20,16 +20,6 @@ export const SignUp = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              メールアドレス
-            </label>
-            <input
-              type="email"
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-              placeholder="メールアドレスを入力してください"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
               パスワード
             </label>
             <input
