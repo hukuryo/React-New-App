@@ -9,7 +9,7 @@ import { Article } from "../types/article";
 import { PageTitle } from "../components/PageTitle";
 import { SearchForm } from "../components/SearchForm";
 import { ScrollUp } from "../components/ScrollUp";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 type ArticleTitle = {
   title: string;
@@ -22,7 +22,6 @@ export const ArticleSearch = () => {
 
   const searchWord = useLocation().search.substring(3);
   const decodedString = decodeURIComponent(searchWord);
-  console.log(decodedString);
 
   useEffect(() => {
     const fetchNewsLists = async () => {
