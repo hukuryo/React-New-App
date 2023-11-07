@@ -1,6 +1,6 @@
 import React from "react";
 
-export const SignUp = () => {
+export default function SignUpModal() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="max-w-md w-full p-6 space-y-8 bg-white rounded-lg shadow-md">
@@ -40,4 +40,4 @@ export const SignUp = () => {
       </div>
     </div>
   );
-};
+}
