@@ -1,5 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Articles } from "./routes/Articles";
 import { Stock } from "./routes/Stock";
@@ -8,7 +8,6 @@ import { ArticleDetail } from "./routes/ArticleDetail";
 import { NotFound } from "./routes/NotFound";
 import { ArticleSearch } from "./routes/ArticleSearch";
 import { Login } from "./routes/Login";
-import Sample from "./routes/Sample";
 
 export default function App() {
   return (
@@ -22,7 +21,6 @@ export default function App() {
           <Route path={`/article/:id`} element={<ArticleDetail />} />
           <Route path={`/article/search`} element={<ArticleSearch />} />
           <Route path={`/login`} element={<Login />} />
-          <Route path={`/Sample`} element={<Sample />} />
           <Route path={`*`} element={<NotFound />} />
         </Routes>
       </>
