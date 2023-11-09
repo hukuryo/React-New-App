@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_API_URL, SUPABASE_API_KEY } from "../lib/client";
+import { SignUpModal } from "../components/SignUpModal";
+
+const supabase = createClient(SUPABASE_API_URL, SUPABASE_API_KEY);
 
 export const Login = () => {
   const [user, setUser] = useState([]);
-  const supabase = createClient(SUPABASE_API_URL, SUPABASE_API_KEY);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     getCountries();
@@ -15,8 +18,21 @@ export const Login = () => {
     setUser(data);
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <button onClick={openModal}>Open Modal</button>
+      <SignUpModal isOpen={isModalOpen} closeModal={closeModal}>
+        <h2>Modal Content</h2>
+        <p>This is the content of the modal.</p>
+      </SignUpModal>
       <div className="max-w-md w-full p-6 space-y-8 bg-white rounded-lg shadow-md">
         <div>
           <h2 className="text-3xl font-semibold text-center">ログイン</h2>
