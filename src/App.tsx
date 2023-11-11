@@ -8,6 +8,7 @@ import { ArticleDetail } from "./routes/ArticleDetail";
 import { NotFound } from "./routes/NotFound";
 import { ArticleSearch } from "./routes/ArticleSearch";
 import { Login } from "./routes/Login";
+import { SignUp } from "./routes/SignUp";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path={`/article/:id`} element={<ArticleDetail />} />
           <Route path={`/article/search`} element={<ArticleSearch />} />
           <Route path={`/login`} element={<Login />} />
+          <Route path={`/signUp`} element={<SignUp />} />
           <Route path={`*`} element={<NotFound />} />
         </Routes>
       </>
