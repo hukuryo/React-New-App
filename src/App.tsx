@@ -1,6 +1,5 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Header } from "./components/Header";
 import { Articles } from "./routes/Articles";
 import { Stock } from "./routes/Stock";
 import { Favorite } from "./routes/Favorite";
@@ -14,7 +13,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <>
-        <Header />
         <Routes>
           <Route path={`/`} element={<Articles />} />
           <Route path={`/stock`} element={<Stock />} />

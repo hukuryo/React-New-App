@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_URL } from "../lib/client";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
+import { Header } from "../components/Header";
 import { NewsList } from "../components/NewsList";
 import { Loading } from "../components/Loading";
 import { Article } from "../types/article";
@@ -37,26 +38,29 @@ export const Articles = () => {
   };
 
   return (
-    <div className="p-8">
-      <PageTitle pageTitle={"ホーム"} iconName={faHome} />
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <SearchForm
-            value={searchQuery}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setSearchQuery(e.target.value)
-            }
-            onSearch={searchArticles}
-          />
-          <NewsList
-            articles={articles}
-            noArticleMessage={"記事が取得できませんでした。"}
-          />
-        </>
-      )}
-      <ScrollUp />
-    </div>
+    <>
+      <Header />
+      <div className="p-8">
+        <PageTitle pageTitle={"ホーム"} iconName={faHome} />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <SearchForm
+              value={searchQuery}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSearchQuery(e.target.value)
+              }
+              onSearch={searchArticles}
+            />
+            <NewsList
+              articles={articles}
+              noArticleMessage={"記事が取得できませんでした。"}
+            />
+          </>
+        )}
+        <ScrollUp />
+      </div>
+    </>
   );
 };

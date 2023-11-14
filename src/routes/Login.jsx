@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_API_URL, SUPABASE_API_KEY } from "../lib/client";
 import { Link } from "react-router-dom";
+import { login } from "../store/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const supabase = createClient(SUPABASE_API_URL, SUPABASE_API_KEY);
 
@@ -17,7 +19,9 @@ export const Login = () => {
     setUser(data);
   };
 
-  console.log(user);
+  // const login = () => {
+  //   console.log(user.some((user) => user.name === ))
+  // }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -50,6 +54,7 @@ export const Login = () => {
             <button
               className="w-full mt-4 py-2 px-4 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
               type="submit"
+              onClick={login}
             >
               ログイン
             </button>
