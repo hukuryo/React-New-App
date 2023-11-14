@@ -6,6 +6,7 @@ import { Loading } from "../components/Loading";
 import { PageTitle } from "../components/PageTitle";
 import { useSelector } from "react-redux";
 import { ScrollUp } from "../components/ScrollUp";
+import { Header } from "../components/Header";
 
 export const Stock = () => {
   const [loading, setLoading] = useState(true);
@@ -24,19 +25,22 @@ export const Stock = () => {
   }, []);
 
   return (
-    <div className="p-8">
-      <PageTitle pageTitle="ストック記事" iconName={faBookmark} />
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <NewsList
-            articles={clips}
-            noArticleMessage={"ストックしている記事はありません。"}
-          />
-          <ScrollUp />
-        </>
-      )}
-    </div>
+    <>
+      <Header />
+      <div className="p-8">
+        <PageTitle pageTitle="ストック記事" iconName={faBookmark} />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <NewsList
+              articles={clips}
+              noArticleMessage={"ストックしている記事はありません。"}
+            />
+            <ScrollUp />
+          </>
+        )}
+      </div>
+    </>
   );
 };

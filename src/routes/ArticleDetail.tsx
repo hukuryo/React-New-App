@@ -9,6 +9,7 @@ import axios from "axios";
 import { addClip, deleteClip } from "../store/clipSlice";
 import { addFavorite, deleteFavorite } from "../store/favoriteSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { Header } from "../components/Header";
 
 export const ArticleDetail = () => {
   const [filterArticle, setFilterArticle] = useState<Article | null>(null);
@@ -79,37 +80,42 @@ export const ArticleDetail = () => {
   }
 
   return (
-    <div className="container mx-auto py-8">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
-        <div className="mb-10">
-          <BookMarkButton
-            iconStyle={bookMarkButtonStyle}
-            articleClip={ArticleClip}
+    <>
+      <Header />
+      <div className="container mx-auto py-8">
+        <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+          <div className="mb-10">
+            <BookMarkButton
+              iconStyle={bookMarkButtonStyle}
+              articleClip={ArticleClip}
+            />
+            <FavoriteButton
+              iconStyle={favoriteButtonStyle}
+              favoriteArticle={ArticleFavorite}
+            />
+          </div>
+          <h1 className="text-3xl font-semibold mb-4">{filterArticle.title}</h1>
+          <p className="text-gray-500 mb-4">著者: {filterArticle.author}</p>
+          <img
+            src={filterArticle.urlToImage}
+            alt={filterArticle.title}
+            className="w-full rounded-lg mb-4"
           />
-          <FavoriteButton
-            iconStyle={favoriteButtonStyle}
-            favoriteArticle={ArticleFavorite}
-          />
-        </div>
-        <h1 className="text-3xl font-semibold mb-4">{filterArticle.title}</h1>
-        <p className="text-gray-500 mb-4">著者: {filterArticle.author}</p>
-        <img
-          src={filterArticle.urlToImage}
-          alt={filterArticle.title}
-          className="w-full rounded-lg mb-4"
-        />
-        <p className="text-gray-700 mt-10 mb-5">{filterArticle.description}</p>
+          <p className="text-gray-700 mt-10 mb-5">
+            {filterArticle.description}
+          </p>
 
-        <span className="text-blue-500">
-          <Link
-            to={filterArticle.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            続きはこちら→
-          </Link>
-        </span>
+          <span className="text-blue-500">
+            <Link
+              to={filterArticle.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              続きはこちら→
+            </Link>
+          </span>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

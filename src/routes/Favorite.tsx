@@ -6,6 +6,7 @@ import { Loading } from "../components/Loading";
 import { PageTitle } from "../components/PageTitle";
 import { useSelector } from "react-redux";
 import { ScrollUp } from "../components/ScrollUp";
+import { Header } from "../components/Header";
 
 export const Favorite = () => {
   const [loading, setLoading] = useState(true);
@@ -27,19 +28,22 @@ export const Favorite = () => {
   }, []);
 
   return (
-    <div className="p-8">
-      <PageTitle pageTitle="お気に入りの記事" iconName={faHeart} />
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <NewsList
-            articles={favoriteArticles}
-            noArticleMessage={"お気に入りの記事はありません"}
-          />
-          <ScrollUp />
-        </>
-      )}
-    </div>
+    <>
+      <Header />
+      <div className="p-8">
+        <PageTitle pageTitle="お気に入りの記事" iconName={faHeart} />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <NewsList
+              articles={favoriteArticles}
+              noArticleMessage={"お気に入りの記事はありません"}
+            />
+            <ScrollUp />
+          </>
+        )}
+      </div>
+    </>
   );
 };

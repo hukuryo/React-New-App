@@ -10,6 +10,7 @@ import { PageTitle } from "../components/PageTitle";
 import { SearchForm } from "../components/SearchForm";
 import { ScrollUp } from "../components/ScrollUp";
 import { useLocation } from "react-router-dom";
+import { Header } from "../components/Header";
 
 type ArticleTitle = {
   title: string;
@@ -49,29 +50,32 @@ export const ArticleSearch = () => {
   };
 
   return (
-    <div className="p-8">
-      <PageTitle
-        pageTitle={`"${decodedString}"の検索結果`}
-        iconName={faMagnifyingGlass}
-      />
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <SearchForm
-            value={searchQuery}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setSearchQuery(e.target.value)
-            }
-            onSearch={searchArticles}
-          />
-          <NewsList
-            articles={articles}
-            noArticleMessage={"該当する記事は見つかりませんでした。"}
-          />
-        </>
-      )}
-      <ScrollUp />
-    </div>
+    <>
+      <Header />
+      <div className="p-8">
+        <PageTitle
+          pageTitle={`"${decodedString}"の検索結果`}
+          iconName={faMagnifyingGlass}
+        />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <SearchForm
+              value={searchQuery}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSearchQuery(e.target.value)
+              }
+              onSearch={searchArticles}
+            />
+            <NewsList
+              articles={articles}
+              noArticleMessage={"該当する記事は見つかりませんでした。"}
+            />
+          </>
+        )}
+        <ScrollUp />
+      </div>
+    </>
   );
 };
