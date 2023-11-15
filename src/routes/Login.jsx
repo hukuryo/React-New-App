@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_API_URL, SUPABASE_API_KEY } from "../lib/client";
 import { Link } from "react-router-dom";
-import { login } from "../store/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 
 const supabase = createClient(SUPABASE_API_URL, SUPABASE_API_KEY);
 
 export const Login = () => {
   const [user, setUser] = useState([]);
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     getUsers();
@@ -19,9 +20,17 @@ export const Login = () => {
     setUser(data);
   };
 
-  // const login = () => {
-  //   console.log(user.some((user) => user.name === ))
-  // }
+  const handleUsernameChange = (event) => {
+    setUserName(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleLogin = () => {
+    console.log(user.some((userData) => userData.name === username));
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -38,6 +47,8 @@ export const Login = () => {
               type="text"
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
               placeholder="ユーザー名を入力してください"
+              value={username}
+              onChange={handleUsernameChange}
             />
           </div>
           <div>
@@ -48,23 +59,23 @@ export const Login = () => {
               type="password"
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
               placeholder="パスワードを入力してください"
+              value={password}
+              onChange={handlePasswordChange}
             />
           </div>
           <div>
             <button
               className="w-full mt-4 py-2 px-4 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
-              type="submit"
-              onClick={login}
+              type="button"
+              onClick={handleLogin}
             >
               ログイン
             </button>
           </div>
         </form>
         <div className="mt-5 text-right">
-          <Link to="/signup">
-            <a className="hover:opacity-70 hover:underline">
-              未登録の方はこちら
-            </a>
+          <Link to="/signup" className="hover:opacity-70 hover:underline">
+            未登録の方はこちら
           </Link>
         </div>
       </div>
