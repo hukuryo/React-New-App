@@ -76,7 +76,12 @@ export const ArticleDetail = () => {
   }
 
   if (!filterArticle) {
-    return <div>記事が見つかりませんでした。</div>;
+    return (
+      <>
+        <Header />
+        <div>記事が見つかりませんでした。</div>;
+      </>
+    );
   }
 
   return (

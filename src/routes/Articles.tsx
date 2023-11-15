@@ -24,7 +24,12 @@ export const Articles = () => {
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        return <div>ニュースが取得できませんでした</div>;
+        return (
+          <>
+            <Header />
+            <div>ニュースが取得できませんでした</div>;
+          </>
+        );
       }
     };
     fetchNewsLists();
@@ -43,7 +48,9 @@ export const Articles = () => {
       <div className="p-8">
         <PageTitle pageTitle={"ホーム"} iconName={faHome} />
         {loading ? (
-          <Loading />
+          <>
+            <Loading />
+          </>
         ) : (
           <>
             <SearchForm
