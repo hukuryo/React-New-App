@@ -10,13 +10,20 @@ import { Article } from "../types/article";
 import { PageTitle } from "../components/PageTitle";
 import { SearchForm } from "../components/SearchForm";
 import { ScrollUp } from "../components/ScrollUp";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const Articles = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const isLogin = useSelector((state: any) => state.user.user);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!isLogin) {
+      navigate("/login");
+    }
     const fetchNewsLists = async () => {
       try {
         const response = await axios.get(API_URL);

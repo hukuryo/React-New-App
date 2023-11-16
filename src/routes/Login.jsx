@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_API_URL, SUPABASE_API_KEY } from "../lib/client";
 import { Link, useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { login } from "../store/userSlice";
 
 const supabase = createClient(SUPABASE_API_URL, SUPABASE_API_KEY);
 
 export const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [user, setUser] = useState([]);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -34,6 +36,7 @@ export const Login = () => {
       user.some((userData) => userData.name === username) &&
       user.some((userData) => userData.password === password)
     ) {
+      dispatch(login(true));
       navigate("/");
     }
   };
