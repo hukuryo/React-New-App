@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_API_URL, SUPABASE_API_KEY } from "../lib/client";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/userSlice";
 
 const supabase = createClient(SUPABASE_API_URL, SUPABASE_API_KEY);
@@ -13,8 +13,12 @@ export const Login = () => {
   const [user, setUser] = useState([]);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const isLogin = useSelector((state) => state.user.user);
 
   useEffect(() => {
+    if (isLogin) {
+      navigate("/");
+    }
     getUsers();
   }, []);
 
