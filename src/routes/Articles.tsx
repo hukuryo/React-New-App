@@ -21,9 +21,10 @@ export const Articles = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLogin) {
-      navigate("/login");
-    }
+    // if (!isLogin) {
+    //   navigate("/login");
+    // }
+    console.log(isLogin);
     const fetchNewsLists = async () => {
       try {
         const response = await axios.get(API_URL);

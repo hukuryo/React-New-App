@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark, faHeart, faHome } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightFromBracket,
+  faBookmark,
+  faHeart,
+  faHome,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const Header = () => {
+  const logout = () => {
+    window.location.reload();
+  };
   return (
     <header className="bg-blue-500 text-white py-4">
       <div className="px-8 mx-auto flex justify-between items-center">
@@ -30,6 +38,15 @@ export const Header = () => {
                 お気に入り記事
               </Link>
             </li>
+            {/* <li className="hover:opacity-70 font-bold">
+              <Link to="/login" onClick={logout}>
+                <FontAwesomeIcon
+                  icon={faArrowRightFromBracket}
+                  className="pr-1"
+                />
+                ログアウト
+              </Link>
+            </li> */}
           </ul>
         </nav>
       </div>
