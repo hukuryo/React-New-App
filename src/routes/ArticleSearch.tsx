@@ -11,6 +11,8 @@ import { SearchForm } from "../components/SearchForm";
 import { ScrollUp } from "../components/ScrollUp";
 import { useLocation } from "react-router-dom";
 import { Header } from "../components/Header";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 type ArticleTitle = {
   title: string;
@@ -20,11 +22,15 @@ export const ArticleSearch = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-
+  const isLogin = useSelector((state: any) => state.user.user);
   const searchWord = useLocation().search.substring(3);
   const decodedString = decodeURIComponent(searchWord);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!isLogin) {
+      navigate("/login");
+    }
     const fetchNewsLists = async () => {
       try {
         const response = await axios.get(API_URL);

@@ -7,12 +7,19 @@ import { PageTitle } from "../components/PageTitle";
 import { useSelector } from "react-redux";
 import { ScrollUp } from "../components/ScrollUp";
 import { Header } from "../components/Header";
+import { useNavigate } from "react-router-dom";
 
 export const Stock = () => {
   const [loading, setLoading] = useState(true);
   const clips = useSelector((state: any) => state.clip.clips);
 
+  const isLogin = useSelector((state: any) => state.user.user);
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (!isLogin) {
+      navigate("/login");
+    }
     const fetchNewsLists = async () => {
       try {
         setLoading(false);
