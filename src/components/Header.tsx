@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,9 +9,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export const Header = () => {
+  const navigation = useNavigate();
   const logout = () => {
-    window.location.reload();
+    const userConfirmed = window.confirm("ログアウト");
+    if (userConfirmed) {
+      navigation("login");
+    }
   };
+
   return (
     <header className="bg-blue-500 text-white py-4">
       <div className="px-8 mx-auto flex justify-between items-center">
@@ -38,7 +43,7 @@ export const Header = () => {
                 お気に入り記事
               </Link>
             </li>
-            {/* <li className="hover:opacity-70 font-bold">
+            <li className="hover:opacity-70 font-bold">
               <Link to="/login" onClick={logout}>
                 <FontAwesomeIcon
                   icon={faArrowRightFromBracket}
@@ -46,7 +51,7 @@ export const Header = () => {
                 />
                 ログアウト
               </Link>
-            </li> */}
+            </li>
           </ul>
         </nav>
       </div>
