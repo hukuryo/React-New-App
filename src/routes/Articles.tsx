@@ -24,7 +24,6 @@ export const Articles = () => {
     if (!isLogin) {
       navigate("/login");
     }
-    console.log(isLogin);
     const fetchNewsLists = async () => {
       try {
         const response = await axios.get(API_URL);
