@@ -10,6 +10,7 @@ import {
 
 export const Header = () => {
   const navigation = useNavigate();
+
   const logout = () => {
     const userConfirmed = window.confirm("ログアウト");
     if (userConfirmed) {
@@ -21,7 +22,7 @@ export const Header = () => {
     <header className="bg-blue-500 text-white py-4">
       <div className="px-8 mx-auto flex justify-between items-center">
         <div className="text-2xl font-semibold hover:opacity-70">
-          <Link to={`/`}>News App</Link>
+          <Link to={`/`}>News</Link>
         </div>
         <nav>
           <ul className="flex space-x-6">
