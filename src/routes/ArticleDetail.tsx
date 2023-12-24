@@ -10,6 +10,7 @@ import { addClip, deleteClip } from "../store/clipSlice";
 import { addFavorite, deleteFavorite } from "../store/favoriteSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Header } from "../components/Header";
+import ErrorContents from "../components/errorContents";
 
 export const ArticleDetail = () => {
   const [filterArticle, setFilterArticle] = useState<Article | null>(null);
@@ -79,7 +80,7 @@ export const ArticleDetail = () => {
     return (
       <>
         <Header />
-        <div>記事が見つかりませんでした。</div>;
+        <ErrorContents />
       </>
     );
   }
