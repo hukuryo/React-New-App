@@ -14,7 +14,7 @@ export const SearchForm: FC<SearchForm> = ({ value, onChange, onSearch }) => {
     <div className="flex justify-end">
       <input
         type="text"
-        placeholder="記事を検索..."
+        placeholder="記事のタイトルを入力"
         value={value}
         onChange={onChange}
         className="w-80 p-2 rounded border shadow-md"
